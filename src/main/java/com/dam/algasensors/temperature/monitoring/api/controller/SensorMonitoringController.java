@@ -39,7 +39,7 @@ public class SensorMonitoringController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void enable(@PathVariable TSID sensorId) {
         SensorMonitoring sensorMonitoring = findByIdOrDefault(sensorId);
-        if (sensorMonitoring.getEnabled()) {
+        if (Boolean.TRUE.equals(sensorMonitoring.getEnabled())) {
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY,
                     String.format("Sensor monitoring is already enabled for sensor: %s", sensorId));
         }
